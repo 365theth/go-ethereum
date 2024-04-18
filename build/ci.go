@@ -221,7 +221,7 @@ func doInstall(cmdline []string) {
 	gobuild.Args = append(gobuild.Args, "-trimpath")
 
 	// Show packages during build.
-	gobuild.Args = append(gobuild.Args, "-v")
+	//gobuild.Args = append(gobuild.Args, "-v")
 
 	// Now we choose what we're even building.
 	// Default: collect all 'main' packages in cmd/ and build those.
@@ -235,7 +235,6 @@ func doInstall(cmdline []string) {
 		args := make([]string, len(gobuild.Args))
 		copy(args, gobuild.Args)
 		args = append(args, "-o", executablePath(path.Base(pkg)))
-		fmt.Println(executablePath(path.Base(pkg)))
 		args = append(args, pkg)
 		build.MustRun(&exec.Cmd{Path: gobuild.Path, Args: args, Env: gobuild.Env})
 	}
