@@ -66,7 +66,7 @@ jobs:
         - echo "Build 1 md5..."
         - md5sum build/bin/geth
         - rm build/bin/geth
-        - CGO_ENABLED=1 go run build/ci.go install -dlgo
+        - CGO_ENABLED=0 go run build/ci.go install -dlgo
         #- strip --remove-section .note.go.buildid --remove-section .note.gnu.build-id build/bin/geth
         - echo "Build 2 md5..."
         - md5sum build/bin/geth
