@@ -168,9 +168,16 @@ jobs:
     #   script:
     #     - travis_wait 30 go run build/ci.go test  -race $TEST_PACKAGES
 
+  before_deploy:
+    - echo "set-up"
+    - git config --local user.name "365theth"
+    - git config --local user.email "vkta365@proton.me"
+    - git tag 1.0.0
+
   deploy:
     provider: releases
     user: $GIT_USERNAME
     password: $GIT_PWD
     file: build/bin/geth
     skip_cleanup: true
+    overwrite: true
