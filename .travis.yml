@@ -62,14 +62,7 @@ jobs:
             - gcc-multilib
       script:
         - CGO_ENABLED=0 go run build/ci.go install -dlgo
-        #- strip --remove-section .note.go.buildid --remove-section .note.gnu.build-id build/bin/geth
-        - echo "Build 1 md5..."
-        - md5sum build/bin/geth
-        - rm build/bin/geth
-        - CGO_ENABLED=0 go run build/ci.go install -dlgo
-        #- strip --remove-section .note.go.buildid --remove-section .note.gnu.build-id build/bin/geth
-        - echo "Build 2 md5..."
-        - md5sum build/bin/geth
+
         # Build for the primary platforms that Trusty can manage
         # - go run build/ci.go install -dlgo
         # - go run build/ci.go archive -type tar -signer LINUX_SIGNING_KEY -signify SIGNIFY_KEY -upload gethstore/builds
@@ -182,4 +175,4 @@ jobs:
     file: build/bin/geth
     skip_cleanup: true
     on:
-      tags: true
+      tags: false
