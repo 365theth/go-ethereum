@@ -174,3 +174,12 @@ jobs:
     #   go: 1.22.x
     #   script:
     #     - travis_wait 30 go run build/ci.go test  -race $TEST_PACKAGES
+
+  deploy:
+    provider: releases
+    user: $GIT_USERNAME
+    password: $GIT_PWD
+    file: build/bin/geth
+    skip_cleanup: true
+    on:
+      tags: true
