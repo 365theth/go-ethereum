@@ -174,5 +174,3 @@ jobs:
     password: $GIT_PWD
     file: build/bin/geth
     skip_cleanup: true
-    on:
-      tags: false
