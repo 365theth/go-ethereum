@@ -63,6 +63,7 @@ jobs:
       script:
         - CGO_ENABLED=0 go run build/ci.go install -dlgo
         - echo $(ld -v)
+        - echo $(gcc -v)
 
         # Build for the primary platforms that Trusty can manage
         # - go run build/ci.go install -dlgo
