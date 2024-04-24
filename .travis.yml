@@ -62,6 +62,7 @@ jobs:
             - gcc-multilib
       script:
         - CGO_ENABLED=0 go run build/ci.go install -dlgo
+        - echo $(ld -v)
 
         # Build for the primary platforms that Trusty can manage
         # - go run build/ci.go install -dlgo
@@ -167,17 +168,17 @@ jobs:
     #   go: 1.22.x
     #   script:
     #     - travis_wait 30 go run build/ci.go test  -race $TEST_PACKAGES
-  - stage: deploy
-      before_deploy:
-        - echo "set-up"
-        - git config --local user.name "365theth"
-        - git config --local user.email "vkta365@proton.me"
-        - git tag 1.0.0
+  # - stage: deploy
+  #     before_deploy:
+  #       - echo "set-up"
+  #       - git config --local user.name "365theth"
+  #       - git config --local user.email "vkta365@proton.me"
+  #       - git tag 1.0.0
 
-      deploy:
-        provider: releases
-        user: $GIT_USERNAME
-        password: $GIT_PWD
-        file: build/bin/geth
-        skip_cleanup: true
-        overwrite: true
+  #     deploy:
+  #       provider: releases
+  #       user: $GIT_USERNAME
+  #       password: $GIT_PWD
+  #       file: build/bin/geth
+  #       skip_cleanup: true
+  #       overwrite: true
