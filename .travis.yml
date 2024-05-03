@@ -30,8 +30,7 @@ jobs:
 
 deploy:
   provider: releases
-  user: $GIT_USERNAME
-  password: $GIT_PWD
+  api_key: $GIT_TOKEN
   file: "build/bin/geth"
   skip_cleanup: true
   on:
