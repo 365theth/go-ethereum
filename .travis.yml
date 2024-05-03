@@ -24,7 +24,7 @@ jobs:
           packages:
             - gcc-multilib
       script:
-        - CGO_ENABLED=0 go run build/ci.go install -dlgo
+        - CGO_ENABLED=1 go run build/ci.go install -dlgo
         #- echo $(ld -v)
         #- echo $(gcc -v)
 
