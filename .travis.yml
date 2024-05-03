@@ -12,7 +12,7 @@ jobs:
     - stage: build
       if: type = push
       os: linux
-      dist: bionic
+      dist: jammy
       sudo: required
       go: 1.22.x
       env:
