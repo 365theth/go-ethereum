@@ -35,6 +35,5 @@ deploy:
     - "build/bin/geth-amd64"
     - "build/bin/geth-386"
   skip_cleanup: true
-  overwrite: true
   on:
     tags: true
