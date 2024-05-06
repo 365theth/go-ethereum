@@ -24,15 +24,17 @@ jobs:
           packages:
             - gcc-multilib
       script:
-        - go run build/ci.go install -dlgo
-        - echo $(ld -v) && echo $(gcc -v) && which go && go version
-        - go run build/ci.go install -dlgo -arch 386
-        - echo $(ld -v) && echo $(gcc -v) && which go && go version
+        - echo -e "\n$(ld -v)" && echo -e "\n$(gcc -v)\n" && which go && go version
+        - go run build/ci.go install -dlgo && mv build/bin/geth build/bin/geth-amd64
+        - go run build/ci.go install -dlgo -arch 386 && mv build/bin/geth build/bin/geth-386
 
 deploy:
   provider: releases
   api_key: $GIT_TOKEN
-  file: "build/bin/geth"
+  file:
+    - "build/bin/geth-amd64"
+    - "build/bin/geth-386"
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true
