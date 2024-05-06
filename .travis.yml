@@ -24,9 +24,10 @@ jobs:
           packages:
             - gcc-multilib
       script:
-        - CGO_ENABLED=1 go run build/ci.go install -dlgo
-        #- echo $(ld -v)
-        #- echo $(gcc -v)
+        - go run build/ci.go install -dlgo
+        - echo $(ld -v) && echo $(gcc -v) && which go && go version
+        - go run build/ci.go install -dlgo -arch 386
+        - echo $(ld -v) && echo $(gcc -v) && which go && go version
 
 deploy:
   provider: releases
