@@ -32,10 +32,10 @@ jobs:
         - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install gcc-arm-linux-gnueabi libc6-dev-armel-cross gcc-arm-linux-gnueabihf libc6-dev-armhf-cross gcc-aarch64-linux-gnu libc6-dev-arm64-cross
         - sudo ln -s /usr/include/asm-generic /usr/include/asm
 
-        - GOARM=5 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabi-gcc && mv build/bin/geth mv build/bin/geth-arm5
-        - GOARM=6 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabi-gcc && mv build/bin/geth mv build/bin/geth-arm6
-        - GOARM=7 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabihf-gcc && mv build/bin/geth mv build/bin/geth-arm7
-        - go run build/ci.go install -dlgo -arch arm64 -cc aarch64-linux-gnu-gcc && mv build/bin/geth mv build/bin/geth-arm64
+        - GOARM=5 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabi-gcc && mv build/bin/geth build/bin/geth-arm5
+        - GOARM=6 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabi-gcc && mv build/bin/geth build/bin/geth-arm6
+        - GOARM=7 go run build/ci.go install -dlgo -arch arm -cc arm-linux-gnueabihf-gcc && mv build/bin/geth build/bin/geth-arm7
+        - go run build/ci.go install -dlgo -arch arm64 -cc aarch64-linux-gnu-gcc && mv build/bin/geth build/bin/geth-arm64
 
 deploy:
   provider: releases
@@ -43,6 +43,10 @@ deploy:
   file:
     - "build/bin/geth-amd64"
     - "build/bin/geth-386"
+    - "build/bin/geth-arm5"
+    - "build/bin/geth-arm6"
+    - "build/bin/geth-arm7"
+    - "build/bin/geth-arm64"
   skip_cleanup: true
   on:
     tags: true
