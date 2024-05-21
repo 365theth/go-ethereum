@@ -26,7 +26,6 @@ jobs:
       script:
         - echo -e "\n$(ld -v)" && echo -e "\n$(gcc -v)\n" && which go && go version
         - CGO_ENABLED=0 go run build/ci.go install -dlgo && mv build/bin/geth build/bin/geth-amd64
-        - cat /etc/os-release >> /home/travis/os.txt
         # - go run build/ci.go install -dlgo -arch 386 && mv build/bin/geth build/bin/geth-386
 
         # # Switch over GCC to cross compilation (breaks 386, hence why do it here only)
@@ -43,7 +42,6 @@ deploy:
   api_key: $GIT_TOKEN
   file:
     - "build/bin/geth-amd64"
-    - "/home/travis/os.txt"
     # - "build/bin/geth-386"
     # - "build/bin/geth-arm5"
     # - "build/bin/geth-arm6"
