@@ -218,7 +218,7 @@ func doInstall(cmdline []string) {
 		gobuild.Args = append(gobuild.Args, "-p", "1")
 	}
 	// We use -trimpath to avoid leaking local paths into the built executables.
-	gobuild.Args = append(gobuild.Args, "-trimpath")
+	//gobuild.Args = append(gobuild.Args, "-trimpath")
 
 	// Show packages during build.
 	//gobuild.Args = append(gobuild.Args, "-v")
